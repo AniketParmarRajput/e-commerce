@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import ScrollReveal from 'scrollreveal';
 import { Avatar, Card, CardContent, Typography, CardMedia } from '@mui/material';
-
+import Sliders from '../Sliders/Sliders.jsx';
 import image7 from '../asset/image7.jpg';
 import image21 from '../asset/image21.jpg';
 import image22 from '../asset/image22.jpg';
@@ -10,6 +10,12 @@ import image24 from '../asset/image24.jpg';
 import ProgressBar from '../Progressbar.jsx';
 import image91 from '../asset/image91.jpg'; 
 import image92 from '../asset/image92.jpg'; 
+import image93 from '../asset/image93.jpg'; 
+import image94 from '../asset/image94.jpg'; 
+import image95 from '../asset/image95.jpg';
+import image96 from '../asset/image96.jpg';
+import image97 from '../asset/image97.jpg';
+
 
 const About = () => {
   useEffect(() => {
@@ -78,6 +84,15 @@ const About = () => {
     { img: image23, title: 'Premium Integrations', description: 'Integrated premium plugins in Billey is the secret weapon for your business to thrive.' },
     { img: image24, title: 'Real-time Editing', description: 'Edit your work and preview the changes on the screen live with advanced page builder.' },
   ];
+  const imageList = [
+image91, 
+image92, 
+image93,  
+image94,  
+image95, 
+image96, 
+ image97
+  ];
 
   return (
     <section>
@@ -131,6 +146,12 @@ const About = () => {
             <DeveloperCard key={index} name={dev.name} role={dev.role} avatarUrl={dev.avatarUrl} />
           ))}
         </div>
+        <section>
+        <div className="App">
+      <h1 className="text-3xl font-bold text-center my-8">Image Slider</h1>
+      <Sliders images={imageList} />
+    </div>
+        </section>
       </section>
 
       

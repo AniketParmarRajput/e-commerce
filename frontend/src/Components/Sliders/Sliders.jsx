@@ -34,8 +34,8 @@ const ImageSlider = ({ images }) => {
           style={{ transform: `translateX(-${currentIndex * 100 / imagesPerSlide}%)` }}
         >
           {images.map((image, index) => (
-            <div key={index} className="min-w-[14.285%] flex justify-center">
-              <img src={image} alt={`Slide ${index}`} className="max-w-[100px] object-contain" />
+            <div key={index} className="w-full flex justify-center">
+              <img src={image} alt={`Slide ${index}`} className="w-full object-contain" />
             </div>
           ))}
         </div>
