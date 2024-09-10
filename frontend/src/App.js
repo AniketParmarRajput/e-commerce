@@ -13,6 +13,7 @@ import Popup from './Components/Popup/Popup.jsx';
 import AddProduct from './Components/AddProduct/AddProduct.jsx';
 import About from './Components/About us/About.jsx';
 import ProductList from './Components/ProductList/ProductList.jsx';
+import Frequently from './Components/Pages/Frequently.jsx';
 
 
 import { auth } from './Firebase.jsx';
@@ -45,7 +46,7 @@ auth.onAuthStateChanged((user)=>{
         <Route path="/home" element={<Home name={isLoggedin} />} />
          <Route path="/Contect" element={<Contect />} />
          <Route path="/About" element={<About />} />
-        
+         <Route path="/frequently" element={<Frequently />} />
          <Route path="/AddProduct" element={<AddProduct/>}/>
          <Route path="/ProductList" element={<ProductList/>}/>
          <Route path="/Shop" element={<Shop/>}/>

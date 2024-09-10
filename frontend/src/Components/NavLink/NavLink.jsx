@@ -6,7 +6,7 @@ const NavLink = () => {
         submenu:'true',
         sublink:[{
             Head:"",
-            sublinks:[{name:"Home1", link:"/"},
+            sublinks:[{name:"Home1", component: <Link to="/About">About us</Link>},
                 {name:"Home2", link:"/"},
                 {name:"Home3", link:"/"},
                 {name:"Home4", link:"/"},
@@ -83,7 +83,7 @@ const NavLink = () => {
             submenu:'true',
             sublink:[{
                 Head:"",
-                sublinks:[{name:"Frequently Question", link:"/"},
+                sublinks:[{name:"Frequently Question", link:"/frequently"},
                     {name:"Privacy Policy", link:"/"},
                     {name:"404 Page", link:"/"},
                 ]
