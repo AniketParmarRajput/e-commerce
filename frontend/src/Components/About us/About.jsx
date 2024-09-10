@@ -8,8 +8,8 @@ import image22 from '../asset/image22.jpg';
 import image23 from '../asset/image23.jpg';
 import image24 from '../asset/image24.jpg';
 import ProgressBar from '../Progressbar.jsx';
-
-
+import image91 from '../asset/image91.jpg'; 
+import image92 from '../asset/image92.jpg'; 
 
 const About = () => {
   useEffect(() => {

@@ -1,0 +1,66 @@
+# Site settings
+title: "Your Site Title"
+description: "A description of your site"
+baseurl: "" # The subpath of your site, e.g., /blog or leave blank for root
+url: "https://AniketParmarRana.github.io" # Your GitHub Pages URL
+theme: jekyll-theme-primer
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+highlighter: rouge
+
+# Plugins required for GitHub Pages
+plugins:
+  - jekyll-seo-tag
+  - jekyll-github-metadata
+  - jekyll-paginate
+  - jekyll-relative-links
+  - jekyll-readme-index
+  - jekyll-default-layout
+  - jekyll-titles-from-headings
+
+# Pagination settings
+paginate: 10
+paginate_path: "/page:num/"
+
+# Exclude certain files and directories from the build process
+exclude:
+  - node_modules
+  - backend/node_modules/
+  - vendor/
+  - .bundle/
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - backend/node_modules/accepts/HISTORY.md
+  - backend/node_modules/body-parser/HISTORY.md
+  - backend/node_modules/braces/CHANGELOG.md
+  - backend/node_modules/bytes/History.md
+  - backend/node_modules/call-bind/CHANGELOG.md
+  - backend/node_modules/cookie-signature/History.md
+  - backend/node_modules/cookie/HISTORY.md
+
+# GitHub Metadata (used by Jekyll GitHub metadata plugin)
+github:
+  is_project_page: true
+
+# SEO and social media (optional settings)
+seo:
+  title: "Your Site's SEO Title"
+  description: "A better description for SEO purposes"
+  twitter:
+    username: "your-twitter-handle"
+  facebook:
+    publisher: "https://www.facebook.com/your-page"
+
+# Permalinks settings (optional)
+permalink: /:title/
+
+# Optional: If you want to configure Jekyll to only use specific markdown files or directories, use this.
+include:
+  - _pages
+
+# Theme customizations (optional)
+# You can override theme settings like colors and fonts here.
