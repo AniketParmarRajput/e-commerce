@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import ScrollReveal from 'scrollreveal';
 import { Avatar, Card, CardContent, Typography, CardMedia } from '@mui/material';
 import Sliders from '../Sliders/Sliders.jsx';
@@ -93,6 +95,20 @@ image95,
 image96, 
  image97
   ];
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1250 },
+      items: 6
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
 
   return (
     <section>
@@ -146,12 +162,23 @@ image96,
             <DeveloperCard key={index} name={dev.name} role={dev.role} avatarUrl={dev.avatarUrl} />
           ))}
         </div>
-        <section>
-        <div className="App">
-      <h1 className="text-3xl font-bold text-center my-8">Image Slider</h1>
-      <Sliders images={imageList} />
+        {/* <section className='border border-red-500 w-full'>
+        <div className="">
+      <Sliders images={imageList}  />
     </div>
-        </section>
+        </section> */}
+      
+        <Carousel responsive={responsive} className='border border-red-500  bg-white w-full h-96 flex flex-col justify-center items-center p-[100px]'>
+  <div><img src={image91} alt='image'height={100} width={100}/></div>
+  <div><img src={image92} alt='image'height={100} width={100}/></div>
+  <div><img src={image93} alt='image'height={100} width={100}/></div>
+  <div><img src={image94} alt='image'height={100} width={100}/></div>
+  <div><img src={image95} alt='image'height={100} width={100}/></div>
+  <div><img src={image96} alt='image'height={100} width={100}/></div>
+  <div><img src={image97} alt='image'height={100} width={100}/></div>
+  
+</Carousel>
+  
       </section>
 
       
