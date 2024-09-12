@@ -25,6 +25,28 @@ const SocialMediaIcon = ({ Icon, ariaLabel }) => (
 
 
 const Contact = () => {
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "6ceb672e-6ac5-46b6-a98f-cfc9286e1502");
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: json
+    }).then((res) => res.json());
+
+    if (res.success) {
+      console.log("Success", res);
+    }
+  };
   return (
     <div>
       <div className="flex justify-center items-center py-16">
@@ -64,15 +86,16 @@ const Contact = () => {
         {/* Contact Form Section */}
         <div className="flex-1  bg-primary-gray p-6 rounded-md shadow-sm">
           <h2 className="text-2xl font-semibold text-start mb-6 ">Get In Touch</h2>
-          <form className="space-y-5">
+          <form onSubmit={onSubmit}className="space-y-5">
             <div className="flex flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-5">
               <div className="flex-1">
                 <label className="block mb-1 font-medium text-primary-gray3" htmlFor="name">Name</label>
                 <input
                   id="name"
+                  required
                   className="w-full border border-primary-gray2 p-2 rounded-md"
                   type="text"
-                  aria-label="Name"
+                  name="Name"
                 />
               </div>
               <div className="flex-1">
@@ -81,7 +104,7 @@ const Contact = () => {
                   id="email"
                   className="w-full border border-primary-gray2 p-2 rounded-md"
                   type="email"
-                  aria-label="Email"
+                  name="Email"
                 />
               </div>
             </div>
@@ -91,7 +114,7 @@ const Contact = () => {
                 id="subject"
                 className="w-full border border-primary-gray2 p-2 rounded-md"
                 type="text"
-                aria-label="Subject"
+                name="Subject"
               />
             </div>
             <div>
@@ -99,7 +122,7 @@ const Contact = () => {
               <textarea
   id="message"
   className="w-full border  border-primary-gray2 p-2 rounded-md h-36 "
-  aria-label="Your Message"
+  name="Your Message"
 />
             </div>
             <div className="text-start">
