@@ -58,7 +58,7 @@ const ProductList = () => {
                 <tr key={product._id} className="border-b hover:bg-gray-100">
                   <td className="px-6 py-4 whitespace-nowrap">{index + 1}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{product.name}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{product.prize}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{product.price}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{product.category}</td>
                   <td className="px-6 py-4 whitespace-nowrap"><button onClick={()=>deleteProduct(product.id)}>Delete</button></td>
                 </tr>
