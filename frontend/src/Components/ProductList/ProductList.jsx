@@ -48,6 +48,7 @@ const ProductList = () => {
               <th className="px-6 py-3 text-left text-sm font-medium text-white">S.No</th>
               <th className="px-6 py-3 text-left text-sm font-medium text-white">Name</th>
               <th className="px-6 py-3 text-left text-sm font-medium text-white">Price</th>
+              <th className="px-6 py-3 text-left text-sm font-medium text-white">Image</th>
               <th className="px-6 py-3 text-left text-sm font-medium text-white">Category</th>
               <th className="px-6 py-3 text-left text-sm font-medium text-white">Operation</th>
             </tr>
@@ -59,6 +60,7 @@ const ProductList = () => {
                   <td className="px-6 py-4 whitespace-nowrap">{index + 1}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{product.name}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{product.price}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{product.image}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{product.category}</td>
                   <td className="px-6 py-4 whitespace-nowrap"><button onClick={()=>deleteProduct(product.id)}>Delete</button></td>
                 </tr>

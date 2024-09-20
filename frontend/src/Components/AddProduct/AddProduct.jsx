@@ -4,7 +4,8 @@ const AddProduct = () => {
     const [name, setName] = React.useState("");
     const [price, setPrice] = React.useState("");
     const [category, setCategory] = React.useState("");
-    const [company, setCompany] = React.useState(""); // Corrected spelling of setCompany
+    const [company, setCompany] = React.useState("");
+    const [image, setImage] = React.useState("");   // Corrected spelling of setCompany
     const [error, setError] = React.useState(false); 
     const [success, setSuccess] = React.useState(false);// error in inputs
 
@@ -12,7 +13,7 @@ const AddProduct = () => {
         setError(false);
         setSuccess(false);
     
-        if (!name || !price || !category || !company) {
+        if (!name || !price || !category || !company || !image) {
             setError(true);
             console.warn("All fields are required.");
             return;
@@ -47,6 +48,7 @@ const AddProduct = () => {
                 setSuccess(true);
                 setName("");
                 setPrice("");
+                setImage("")
                 setCategory("");
                 setCompany("");
             } else {
@@ -94,6 +96,13 @@ const AddProduct = () => {
                 value={company} onChange={(e) => setCompany(e.target.value)}
             />
             {error &&  !company && <span className='text-red-500'>Enter a valid product company</span>}
+            <input
+                type="file"
+                accept="image/*"
+                className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                onChange={(e) => setImage(e.target.files[0])} // Set image file
+            />
+            {error && !image && <span className='text-red-500'>Please upload an image</span>}
             <button 
                 onClick={addProduct} 
                 className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">
