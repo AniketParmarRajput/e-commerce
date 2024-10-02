@@ -15,7 +15,9 @@ import About from './Components/About us/About.jsx';
 import ProductList from './Components/ProductList/ProductList.jsx';
 import Frequently from './Components/Pages/Frequently.jsx';
 import Private from './Components/Pages/Private.jsx';
-
+import Home2 from './Components/Pages/Home2.jsx';
+import Home3 from './Components/Pages/Home3.jsx';
+import Home4 from './Components/Pages/Home4.jsx';
 
 import { auth } from './Firebase.jsx';
 const App = () => {
@@ -48,6 +50,9 @@ auth.onAuthStateChanged((user)=>{
          <Route path="/Contect" element={<Contect />} />
          <Route path="/About" element={<About />} />
          <Route path="/frequently" element={<Frequently />} />
+         <Route path="/home2" element={<Home2 />} />
+         <Route path="/home3" element={<Home3 />} />
+         <Route path="/home4" element={<Home4 />} />
          <Route path="/private" element={<Private />} />
          <Route path="/AddProduct" element={<AddProduct/>}/>
          <Route path="/ProductList" element={<ProductList/>}/>

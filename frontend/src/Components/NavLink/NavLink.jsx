@@ -6,10 +6,10 @@ const NavLink = () => {
         submenu:'true',
         sublink:[{
             Head:"",
-            sublinks:[{name:"Home1", component: <Link to="/About">About us</Link>},
-                {name:"Home2", link:"/"},
-                {name:"Home3", link:"/"},
-                {name:"Home4", link:"/"},
+            sublinks:[{name:"Home1", link:"/home" },
+                {name:"Home2", link:"/home2"},
+                {name:"Home3", link:"/home3"},
+                {name:"Home4", link:"/home4"},
             ]
         }]
      },
