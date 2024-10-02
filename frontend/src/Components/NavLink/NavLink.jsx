@@ -84,7 +84,7 @@ const NavLink = () => {
             sublink:[{
                 Head:"",
                 sublinks:[{name:"Frequently Question", link:"/frequently"},
-                    {name:"Privacy Policy", link:"/"},
+                    {name:"Privacy Policy", link:"/private"},
                     {name:"404 Page", link:"/"},
                 ]
             }]
