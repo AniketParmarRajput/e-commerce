@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ScrolltoTop from '../ScrolltoTop/ScrolltoTop';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -24,25 +25,77 @@ const Footer = () => (
       {/* Responsive flex-col for mobile and flex-row for larger screens */}
       <Section title="INFORMATION">
         <ul className="space-y-3 md:space-y-4">
-          {['Delivery Information', 'Terms & Conditions', 'Returns', 'Contact'].map((item) => (
-            <li key={item} className="cursor-pointer text-primary-gray3 transition-all duration-500 ease-in-out hover:pl-2 hover:text-primary-white">{item}</li>
-          ))}
+          {/* Updated links using react-router-dom Link component */}
+          <li>
+            <Link to="/delivery" className="cursor-pointer text-primary-gray3 transition-all duration-500 ease-in-out hover:pl-2 hover:text-primary-white">
+              Delivery Information
+            </Link>
+          </li>
+          <li>
+            <Link to="/terms" className="cursor-pointer text-primary-gray3 transition-all duration-500 ease-in-out hover:pl-2 hover:text-primary-white">
+              Terms & Conditions
+            </Link>
+          </li>
+          <li>
+            <Link to="/returns" className="cursor-pointer text-primary-gray3 transition-all duration-500 ease-in-out hover:pl-2 hover:text-primary-white">
+              Returns
+            </Link>
+          </li>
+          <li>
+            <Link to="/Contact" className="cursor-pointer text-primary-gray3 transition-all duration-500 ease-in-out hover:pl-2 hover:text-primary-white">
+              Contact
+            </Link>
+          </li>
         </ul>
       </Section>
 
       <Section title="MY ACCOUNT">
         <ul className="space-y-3 md:space-y-4">
-          {['My account', 'Wishlist', 'Privacy Policy', 'FAQ'].map((item) => (
-            <li key={item} className="cursor-pointer text-primary-gray3 hover:text-primary-white transition-all duration-500 ease-in-out hover:pl-2">{item}</li>
-          ))}
+          <li>
+            <Link to="/my-account" className="cursor-pointer text-primary-gray3 transition-all duration-500 ease-in-out hover:pl-2 hover:text-primary-white">
+              My Account
+            </Link>
+          </li>
+          <li>
+            <Link to="/wishlist" className="cursor-pointer text-primary-gray3 transition-all duration-500 ease-in-out hover:pl-2 hover:text-primary-white">
+              Wishlist
+            </Link>
+          </li>
+          <li>
+            <Link to="/privacy-policy" className="cursor-pointer text-primary-gray3 transition-all duration-500 ease-in-out hover:pl-2 hover:text-primary-white">
+              Privacy Policy
+            </Link>
+          </li>
+          <li>
+            <Link to="/faq" className="cursor-pointer text-primary-gray3 transition-all duration-500 ease-in-out hover:pl-2 hover:text-primary-white">
+              FAQ
+            </Link>
+          </li>
         </ul>
       </Section>
 
       <Section title="CATEGORIES">
         <ul className="space-y-3 md:space-y-4">
-          {['Decorative', 'Kitchen Utensils', 'Chairs & Bar Stools', 'Interior Lighting'].map((item) => (
-            <li key={item} className="cursor-pointer text-primary-gray3 hover:text-primary-white transition-all duration-500 ease-in-out hover:pl-2">{item}</li>
-          ))}
+          <li>
+            <Link to="/decorative" className="cursor-pointer text-primary-gray3 transition-all duration-500 ease-in-out hover:pl-2 hover:text-primary-white">
+              Decorative
+            </Link>
+          </li>
+          <li>
+            <Link to="/kitchen" className="cursor-pointer text-primary-gray3 transition-all duration-500 ease-in-out hover:pl-2 hover:text-primary-white">
+              Kitchen Utensils
+            </Link>
+          </li>
+          <li>
+            <Link to="/chairs" className="cursor-pointer text-primary-gray3 transition-all duration-500 ease-in-out hover:pl-2 hover:text-primary-white">
+              Chairs & Bar Stools
+            </Link>
+          </li>
+          <li>
+            <Link to="/interior" className="cursor-pointer text-primary-gray3 transition-all duration-500 ease-in-out hover:pl-2 hover:text-primary-white">
+              Interior Lighting
+            </Link>
+          </li>
         </ul>
       </Section>
 

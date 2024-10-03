@@ -43,7 +43,7 @@ const Header = () => {
             <Link to="/ProductList">Products</Link>
           </li>
           <li className="hover:text-primary-Camel">
-            <Link to="/Contact">Contact</Link>
+            <Link to="/Contect">Contact</Link>
           </li>
         </ul>
       </nav>
@@ -74,6 +74,7 @@ const Header = () => {
       {/* Dropdown Mobile Menu */}
       {showMenu && (
         <nav className="absolute top-full left-0 w-full bg-primary-white border-t shadow-lg">
+          <NavLink />
           <ul className="flex flex-col items-center gap-4 py-4">
             <li>
               <Link to="/About" onClick={toggleMenu}>About Us</Link>
