@@ -57,19 +57,24 @@ auth.onAuthStateChanged((user)=>{
         <Routes>
         <Route path="/" element={<Singup/>} />
         
-       
+       {/* home */}
         <Route path="/home" element={<Home name={isLoggedin} />} />
         <Route path="/home2" element={<Home2 />} />
          <Route path="/home3" element={<Home3 />} />
          <Route path="/home4" element={<Home4 />} />
+
          <Route path="/Contect" element={<Contect />} />
          <Route path="/About" element={<About />} />
+
+         {/* pages */}
          <Route path="/frequently" element={<Frequently />} />
          <Route path="/notfound" element={<NotFound />} />
          <Route path="/private" element={<Private />} />
+
          <Route path="/AddProduct" element={<AddProduct/>}/>
          <Route path="/ProductList" element={<ProductList/>}/>
          <Route path="/Shop" element={<Shop/>}/>
+         
          <Route path="/Login" element={<Login />} />
          <Route path="/Popup" element={<Popup />} />
 

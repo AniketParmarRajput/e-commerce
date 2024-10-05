@@ -1,11 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 const Decorative = () => {
   return (
-    <div>
-      <p className='h-screen flex items-center justify-center text-center text-4xl font-bold'>coming soon!</p>
-    </div>
-  )
-}
+    <p className='h-screen flex items-center justify-center text-center text-4xl font-bold'>coming soon!</p>
+  );
+};
 
-export default Decorative
+export default Decorative;

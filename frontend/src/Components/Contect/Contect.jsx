@@ -72,7 +72,7 @@ const Contact = () => {
               Icon={PhoneIcon}
               text={
                 <>
-                  <span>0123456789</span>
+                  <span>1-800-123-4567</span>
                   <br />
                   <span>0123456789</span>
                 </>

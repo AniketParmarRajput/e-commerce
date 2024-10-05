@@ -49,10 +49,10 @@ const Header = () => {
       </nav>
 
       {/* Right Section: Icons & Search */}
-      <div className="flex items-center space-x-5">
+      <div className="flex items-center space-x-2">
         <ThemeProvider theme={theme}>
           <Stack spacing={2} direction="row">
-            <Badge badgeContent={3} color="secondary">
+            <Badge badgeContent={7} color="secondary">
               <WishList color="action" />
             </Badge>
             <Badge badgeContent={3} color="secondary">
