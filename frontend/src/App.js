@@ -31,6 +31,8 @@ import Kitchen from './Components/Pages/Kitchen.jsx';
 import Chairs from './Components/Pages/Chairs.jsx';
 import Interior from './Components/Pages/Interior.jsx';
 import { auth } from './Firebase.jsx';
+import Checkout from './Components/Pages/Checkout.jsx';
+import Cart from './Components/Pages/Cart.jsx';
 
 const App = () => {
   const [isLoggedin,setisLoggedin]=useState("")
@@ -70,6 +72,8 @@ auth.onAuthStateChanged((user)=>{
          <Route path="/frequently" element={<Frequently />} />
          <Route path="/notfound" element={<NotFound />} />
          <Route path="/private" element={<Private />} />
+         <Route path="/checkout" element={<Checkout />} />
+         <Route path="/cart" element={<Cart />} />
 
          <Route path="/AddProduct" element={<AddProduct/>}/>
          <Route path="/ProductList" element={<ProductList/>}/>

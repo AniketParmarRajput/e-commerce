@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
 import DehazeIcon from '@mui/icons-material/Dehaze';
@@ -12,47 +13,70 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 const BarDrawer = () => {
   const [open, setOpen] = useState(false);
 
-  const toggleDrawer = (newOpen) => () => {
+  // Function to toggle drawer
+  const toggleDrawer = (newOpen) => (event) => {
+    // Ensure the event is handled properly
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
     setOpen(newOpen);
   };
 
   const DrawerList = (
     <Box
-      sx={{ width: 350 ,backgroundColor: 'black',color: 'white',height: 1000 }}
+      sx={{ width: 350, backgroundColor: 'black', color: 'white', height: '100%' }}
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-     <section className='flex flex-col justify-center items-center h-full space-x-8 space-y-6'>
-     <img  className='h-[28px] w-28  ' src={image22} alt='logo'/>
-     <div>
-      <p>Address: Your address goes here.<br></br>
-Call Us: 0123456789, 0123456789<br></br>
-Email: demo@example.com</p>
-     </div>
-     
-     <div className='space-x-10'>
+      <section className="flex flex-col justify-center items-center h-full space-y-6">
+        {/* Logo */}
+        <img className="h-[28px] w-28" src={image22} alt="logo" />
+
+        {/* Contact Info */}
+        <div>
+          <p>
+            Address: Your address goes here.<br />
+            Call Us: 0123456789, 0123456789<br />
+            Email: demo@example.com
+          </p>
+        </div>
+
+        {/* Social Media Icons */}
+        <div className="space-x-10">
           <FacebookOutlinedIcon />
           <TwitterIcon />
           <InstagramIcon />
           <LinkedInIcon />
         </div>
-        <div className='space-x-5'>
-          <button className='hover:text-[#b19361]'>Wishlist</button>
-          <button className='hover:text-[#b19361]'>Cart</button>
-          <button className='hover:text-[#b19361]'>Checkout</button>
+
+        {/* Navigation Links */}
+        <div className="space-x-5">
+          <Link to="/wishlist">
+            <button className="hover:text-[#b19361]">Wishlist</button>
+          </Link>
+
+          <Link to="/cart">
+            <button className="hover:text-[#b19361]">Cart</button>
+          </Link>
+
+          <Link to="/checkout">
+            <button className="hover:text-[#b19361]">Checkout</button>
+          </Link>
         </div>
-     </section>
+      </section>
     </Box>
   );
 
   return (
     <div>
       <Button className={`text-black ${open ? 'bg-[#b19361]' : 'bg-gray-100'}`} onClick={toggleDrawer(true)}>
-      <div className=' rounded-full  bg-gray-100 p-3 hover:bg-white'>
-      <DehazeIcon className=' text-black hover:text-[#b19361] '/>
-      </div>
+        <div className="rounded-full bg-gray-100 p-3 hover:bg-white">
+          <DehazeIcon className="text-black hover:text-[#b19361]" />
+        </div>
       </Button>
+
+      {/* Drawer */}
       <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>

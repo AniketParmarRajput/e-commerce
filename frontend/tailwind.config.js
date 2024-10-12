@@ -19,6 +19,7 @@ module.exports = {
           'black': '#000000',
           'Off-White-Peach': '#fef5ef',
           'slate': '#64748b',
+          'green':'#047b42'
 
         },
       }
