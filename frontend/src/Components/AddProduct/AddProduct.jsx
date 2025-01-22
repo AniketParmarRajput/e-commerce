@@ -5,7 +5,7 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 const AddProduct = () => {
   const [file, setFile] = useState(null);
   const [name, setName] = useState('');
-  const [prize, setPrize] = useState(0);
+  const [prize, setPrize] = useState('');
   const [categories, setCategories] = useState('');
   const [uploadedData, setUploadedData] = useState(null); // State to store uploaded data
   const fileInputRef = useRef(null);
@@ -45,7 +45,7 @@ const AddProduct = () => {
     setFile(null);
     setName('');
     setCategories(''); // Reset categories state
-    setPrize(0);
+    setPrize('');
     if (fileInputRef.current) {
       fileInputRef.current.value = ''; // Clear the file input
     }

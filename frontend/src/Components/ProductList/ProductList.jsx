@@ -65,16 +65,17 @@ const styles = {
     fontFamily: 'Arial, sans-serif',
   },
   productList: {
+    margin:'30px',
     display: 'flex',
     flexWrap: 'wrap',
-    gap: '30px',
-    justifyContent: 'center',
+    gap: '70px',
+    justifyContent: 'evenly'
   },
   productCard: {
     border: '1px solid #ddd',
     padding: '20px',
     borderRadius: '12px',
-    width: '250px',
+    width: '300px',
     textAlign: 'center',
     boxShadow: '0 8px 15px rgba(0, 0, 0, 0.1)',
     backgroundColor: '#fff',
