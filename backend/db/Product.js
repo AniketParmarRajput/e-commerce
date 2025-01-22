@@ -1,15 +1,11 @@
-import mongoose from 'mongoose';
-const productSchema= new mongoose.Schema({
-    name: {type:String, required:true},
-    price: {type:Number, required:true},
-    category: {type:String, required:true},
-    userId: {type:String, required:true},
-    company: {type:String, required:true},
-    image: {type:Object, required:true} 
-    
-},{
-    timestamps:true
-})
-const Product = mongoose.model('products', productSchema);
+const mongoose = require('mongoose');
 
-export default Product;
+const UserSchema = new mongoose.Schema({
+  name: String,
+  prize: Number,
+  categories: String,
+  image: String
+});
+
+const UserModel = mongoose.model("User", UserSchema); // Corrected model name
+module.exports = UserModel;

@@ -34,6 +34,7 @@ import { auth } from './Firebase.jsx';
 import Checkout from './Components/Pages/Checkout.jsx';
 import Cart from './Components/Pages/Cart.jsx';
 
+
 const App = () => {
   const [isLoggedin,setisLoggedin]=useState("")
   useEffect(()=>{
@@ -57,11 +58,11 @@ auth.onAuthStateChanged((user)=>{
         
       
         <Routes>
-        <Route path="/" element={<Singup/>} />
+        <Route path="/home2" element={<Singup/>} />
         
        {/* home */}
         <Route path="/home" element={<Home name={isLoggedin} />} />
-        <Route path="/home2" element={<Home2 />} />
+        <Route path="/" element={<Home2 />} />
          <Route path="/home3" element={<Home3 />} />
          <Route path="/home4" element={<Home4 />} />
 

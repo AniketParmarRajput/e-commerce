@@ -1,131 +1,153 @@
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth,provider } from '../../Firebase';
-import { signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile, signInWithPopup } from 'firebase/auth';
+import { auth, provider } from '../../Firebase';
 import Googlesvg from '../SVGS/Googlesvg';
 
-
 const Signup = () => {
-  const [value, setValue] = useState({ name: "", email: "", pass: "", con: "" });
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
-  const [error, setError] = useState("");
-  const [google,setgoogle]=useState("");
-  const hand=()=>{
-    signInWithPopup(auth,provider).then((data)=>{
-      setgoogle(data.user.email)
-      localStorage.setItem("email",data.user.email)
-    })
-  }
-  useEffect(()=>{
-    setgoogle(localStorage.getItem('email'))
-  })
+  const [formData, setFormData] = useState({ name: '', email: '', password: '', confirmPassword: '' });
+  const [submitDisabled, setSubmitDisabled] = useState(false);
+  const [error, setError] = useState('');
+  const [googleEmail, setGoogleEmail] = useState('');
+
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    if (!value.name || !value.email || !value.pass || !value.con) {
-      setError("Fill all fields");
-      return;
-    }
-
-    if (value.pass !== value.con) {
-      setError("Passwords do not match");
-      return;
-    }
-    
-
-    setError("");
-    setSubmitButtonDisabled(true);
-
-    createUserWithEmailAndPassword(auth, value.email, value.pass)
-      .then(async (res) => {
-        setSubmitButtonDisabled(false);
-        const user = res.user;
-        await updateProfile(user, { displayName: value.name });
-        const userData = { name: value.name, email: value.email, password: value.pass };
-        fetch("http://localhost:5000/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(userData)
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            // Handle API response if needed
-            console.log(data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
-          localStorage.setItem("user",JSON.stringify(userData))
-        navigate("/home");
+  // Handle Google Sign-In
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((data) => {
+        setGoogleEmail(data.user.email);
+        localStorage.setItem('email', data.user.email);
+        navigate('/home');
       })
       .catch((err) => {
-        setSubmitButtonDisabled(false);
         setError(err.message);
       });
   };
-  
+
+  // Fetch email from localStorage for Google login
+  useEffect(() => {
+    const savedEmail = localStorage.getItem('email');
+    if (savedEmail) {
+      setGoogleEmail(savedEmail);
+    }
+  }, []);
+
+  // Handle Form Submit
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Validate form data
+    if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
+      setError('Please fill in all fields.');
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      setError('Passwords do not match.');
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      setError('Password should be at least 6 characters long.');
+      return;
+    }
+
+    // Reset error and disable submit button
+    setError('');
+    setSubmitDisabled(true);
+
+    try {
+      // Create user with email and password
+      const res = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+      const user = res.user;
+
+      // Update user profile with name
+      await updateProfile(user, { displayName: formData.name });
+
+      // Optionally send user data to a server (API)
+      const userData = { name: formData.name, email: formData.email, password: formData.password };
+      await fetch('http://localhost:5000/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData),
+      });
+
+      // Save user data to localStorage and navigate
+      localStorage.setItem('user', JSON.stringify(userData));
+      navigate('/home');
+    } catch (err) {
+      setError(err.message);
+      setSubmitDisabled(false);
+    }
+  };
 
   return (
-    <>
-      <div className='flex justify-center items-center p-20'>
-        <div className='flex flex-col gap-4 justify-center items-center border-solid border-4 rounded-lg border-primary-Off-White-Peach p-6'>
-          <div>
-            <span className='text-lg font-bold '>Sign up</span>
-          </div>
-          <form className='space-y-4 flex flex-col justify-center sm:w-40 md:w-96'>
-            <input
-              className='outline-none border rounded-lg p-2 bg-primary-Off-White-Peach text-primary-black placeholder-primary-black'
-              placeholder='Name'
-              type='text'
-              value={value.name}
-              onChange={(event) => setValue((prev) => ({ ...prev, name: event.target.value }))}
-            />
-            <input
-              className='outline-none border rounded-lg p-2 bg-primary-Off-White-Peach text-primary-black placeholder-primary-black '
-              placeholder='Email'
-              type='email'
-              value={value.email}
-              onChange={(event) => setValue((prev) => ({ ...prev, email: event.target.value }))}
-            />
-            <input
-              className='outline-none border rounded-lg p-2 bg-primary-Off-White-Peach text-primary-black placeholder-primary-black '
-              placeholder='Password'
-              type='password'
-              value={value.pass}
-              onChange={(event) => setValue((prev) => ({ ...prev, pass: event.target.value }))}
-            />
-            <input
-              className='outline-none border rounded-lg p-2 bg-primary-Off-White-Peach text-primary-black placeholder-primary-black '
-              placeholder='Confirm password'
-              type='password'
-              value={value.con}
-              onChange={(event) => setValue((prev) => ({ ...prev, con: event.target.value }))}
-            />
-          </form>
-          <b className='text-red-500'>{error}</b>
-          <div className='flex flex-col justify-center items-center'>
-            <button
-              className='flex flex-col items-center border rounded-full px-20 py-1 bg-primary-Off-White-Peach text-primary-black sm:w-40 md:w-96'
-              onClick={handleSubmit}
-              disabled={submitButtonDisabled}
-            >
-              Sign up
-            </button>
-            {google? navigate("/home"):
-            <button className="flex flex-col items-center mt-3 px-30 py-1 text-primary-slate sm:w-40 md:w-full' "onClick={hand}><Googlesvg/></button>}
-          </div>
-          <div className='flex gap-1'>
-            <span className='text-xs flex items-center'>Already have an account?</span>
-            <Link to="/Login">
-              <button className='text-sm'>Login</button>
+    <div className="flex justify-center items-center p-10 sm:p-20">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8 space-y-6">
+        <h2 className="text-center text-2xl font-bold">Sign Up</h2>
+        {/* Form Section */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-black"
+            placeholder="Name"
+            type="text"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          />
+          <input
+            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-black"
+            placeholder="Email"
+            type="email"
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          />
+          <input
+            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-black"
+            placeholder="Password"
+            type="password"
+            value={formData.password}
+            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+          />
+          <input
+            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-black"
+            placeholder="Confirm Password"
+            type="password"
+            value={formData.confirmPassword}
+            onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+          />
+          {/* Display error message */}
+          {error && <p className="text-red-500 text-sm">{error}</p>}
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className={`w-full p-3 bg-primary-black text-white rounded-lg ${submitDisabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-primary-Camel'}`}
+            disabled={submitDisabled}
+          >
+            Sign Up
+          </button>
+        </form>
+
+        {/* Google Sign-In */}
+        <div className="flex justify-center items-center mt-4">
+          <button onClick={handleGoogleSignIn} className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-gray-100">
+            <Googlesvg />
+            <span>Sign up with Google</span>
+          </button>
+        </div>
+
+        {/* Link to Login */}
+        <div className="text-center mt-4">
+          <p className="text-sm">
+            Already have an account?{' '}
+            <Link to="/login" className="text-primary-green hover:underline">
+              Login
             </Link>
-          </div>
+          </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

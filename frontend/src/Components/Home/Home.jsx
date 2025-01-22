@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import image5 from '../asset/image.jpg';
 import image6 from '../asset/image1.jpg';
 import image7 from '../asset/image2.jpg';
@@ -18,69 +18,105 @@ import image17 from '../asset/image17.jpg';
 import image222 from '../asset/image222.jpg';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Side from '../Side/Side';
+import Product from '../Product/Product.jsx';
+
 
 const Home = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const section = document.getElementById('animated-section');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 } // Adjust threshold as needed
+    );
+
+    if (section) observer.observe(section);
+
+    return () => {
+      if (section) observer.unobserve(section);
+    };
+  }, []);
+
   return (
     <div>
       {/* <SliderCarousel/> */}
-      <section className='h-screen w-full bg-cover  flex justify-start items-center ' style={{backgroundImage:`url(${image222})`}}>
+      <section className='h-screen w-full bg-cover  flex justify-start items-center  ' style={{backgroundImage:`url(${image222})`}}>
 <aside className=' h-56 w-1/2 pl-20 space-y-4 '>
-  <p>NEW COLLECTION</p>
-  <h1 className='text-6xl font-medium' >Best Of NeoCon <br></br>Glod Award</h1>
-  <button className='border border-primary-black px-8 py-4 rounded hover:text-primary-Camel hover:border-primary-Camel'>SHOP NOW</button>
+  <p className='animate-fadeInBottom duration-700 delay-5s'>NEW COLLECTION</p>
+  <h1 className='text-6xl font-medium animate-fadeInBottom duration-200 delay-[59.3s]' >Best Of NeoCon <br></br>Glod Award</h1>
+  <button className='border border-primary-black px-8 py-4 rounded hover:text-primary-Camel hover:border-primary-Camel animate-fadeInBottom duration-200 delay-[59.3s]'>SHOP NOW</button>
 
 </aside>
       </section>
       <Side />
-    <div className='h-96 flex  m-20'>
-      
-    <div className=' flex-1 bg-cover h-96 w-2/3 flex justify-center items-center ' style={{backgroundImage:`url(${image5})`}}>
-    <div  className='   h-auto w-72 ml-40 p-5 space-y-7'>
-      <h1 className="  text-3xl text-left ">Mini rechargeable Table Lamp - <br></br>E216</h1>
-      <p>WE DESIGN YOUR HOME</p>
-      <button className='border border-black border-3 p-5 '>DISCOVER NOW</button>
-      </div>
-    </div>
-    
-    <div className='flex-1  space-y-14  '>
-      <div className='flex justify-evenly'>
-      <div className='flex  bg-cover  h-40 w-80'  style={{backgroundImage:`url(${image6})`}} >
-      <div  className='   h-auto w-72 ml-40  pt-5 space-y-6'>
-      <h1 className="  text-2xl text-left ">Kitchen
-      utensils</h1>
-    
-      <button> SHOP ME</button>
-      </div>
-</div>
-<div className='flex bg-cover  h-40 w-80' style={{backgroundImage:`url(${image7})`}}>
-<div  className='   h-auto w-72 ml-40 pt-5 space-y-6'>
-      <h1 className="  text-2xl text-left ">Sofas and
-Armchairs</h1>
-    
-      <button> SHOP ME</button>
-      </div>
-</div>
-      </div>
-      <div className='flex justify-evenly '>
-      <div className='flex bg-cover  h-40 w-80 ' style={{backgroundImage:`url(${image8})`}}>
-      <div  className='   h-auto w-72 ml-40 pt-5 space-y-6'>
-      <h1 className="  text-2xl text-left ">Chair & Bar stools</h1>
-    
-      <button> SHOP ME</button>
-      </div>
-</div>
-<div className='flex  bg-cover  h-40 w-80' style={{backgroundImage:`url(${image9})`}}>
-<div  className='   h-auto w-72 ml-40 pt-5 space-y-6'>
-      <h1 className="  text-2xl text-left ">Interior
-lighting</h1>
-    
-      <button> SHOP ME</button>
-      </div>
-</div>
+    <div
+      id="animated-section"
+      className={`h-96 flex m-20 ${
+        isVisible ? 'animate-fadeInBottom duration-200 delay-[59.3s]' : 'opacity-0'
+      }`}
+    >
+      <div
+        className="flex-1 bg-cover h-96 w-2/3 flex justify-center items-center"
+        style={{ backgroundImage: `url(${image5})` }}
+      >
+        <div className="h-auto w-72 ml-40 p-5 space-y-7">
+          <h1 className="text-3xl text-left">
+            Mini rechargeable Table Lamp - <br />
+            E216
+          </h1>
+          <p>WE DESIGN YOUR HOME</p>
+          <button className="border border-black border-3 p-5">DISCOVER NOW</button>
+        </div>
       </div>
 
-    </div>
-    
+      <div className="flex-1 space-y-14">
+        <div className="flex justify-evenly">
+          <div
+            className="flex bg-cover h-40 w-80"
+            style={{ backgroundImage: `url(${image6})` }}
+          >
+            <div className="h-auto w-72 ml-40 pt-5 space-y-6">
+              <h1 className="text-2xl text-left">Kitchen utensils</h1>
+              <button>SHOP ME</button>
+            </div>
+          </div>
+          <div
+            className="flex bg-cover h-40 w-80"
+            style={{ backgroundImage: `url(${image7})` }}
+          >
+            <div className="h-auto w-72 ml-40 pt-5 space-y-6">
+              <h1 className="text-2xl text-left">Sofas and Armchairs</h1>
+              <button>SHOP ME</button>
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-evenly">
+          <div
+            className="flex bg-cover h-40 w-80"
+            style={{ backgroundImage: `url(${image8})` }}
+          >
+            <div className="h-auto w-72 ml-40 pt-5 space-y-6">
+              <h1 className="text-2xl text-left">Chair & Bar stools</h1>
+              <button>SHOP ME</button>
+            </div>
+          </div>
+          <div
+            className="flex bg-cover h-40 w-80"
+            style={{ backgroundImage: `url(${image9})` }}
+          >
+            <div className="h-auto w-72 ml-40 pt-5 space-y-6">
+              <h1 className="text-2xl text-left">Interior lighting</h1>
+              <button>SHOP ME</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div> 
     <div>
     <div className='pl-[100px]'>
@@ -91,6 +127,11 @@ lighting</h1>
   
 </div>
     </div>
+    <div>
+<Product />
+    </div>
+    
+
 
     <section className='h-svh w-auto flex justify-center items-center'>
     <div className=' flex-1 bg-contain bg-center bg-no-repeat h-2/3 w-auto flex justify-center items-center ' style={{backgroundImage:`url(${image99})`}}>
@@ -152,6 +193,7 @@ lighting</h1>
     HONOTEMOLATE
   </button>
 </section>
+
 
 
 

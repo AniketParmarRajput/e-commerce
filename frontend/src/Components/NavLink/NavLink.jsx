@@ -36,7 +36,7 @@ const NavLink = () => {
                         { name: "Compare", link: "/" },
                         { name: "Checkout", link: "/" },
                         { name: "Login", link: "/" },
-                        { name: "My Account", link: "/" }
+                        { name: "My Account", link: "/my-account" }
                     ]
                 },
                 

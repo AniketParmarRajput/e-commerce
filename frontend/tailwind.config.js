@@ -9,6 +9,20 @@ module.exports = {
     },
     
     extend: {
+      keyframes: {
+        fadeInBottom: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(100%)',
+          },
+          '100%': {
+            opacity: '1',
+          },
+        },
+      },
+      animation: {
+        fadeInBottom: 'fadeInBottom 1s ease-out', // Adjust duration and easing as needed
+      },
       colors: {
         primary: {
           'Camel': '#b19361',

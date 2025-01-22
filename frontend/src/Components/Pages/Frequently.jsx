@@ -58,11 +58,11 @@ const Frequently = () => {
               aria-controls={`${faq.panel}bh-content`}
               id={`${faq.panel}bh-header`}
             >
-              <Typography sx={{ width: '100%', height: '100%',flexShrink: 20 }} className='hover:text-primary-Camel '>{faq.title}</Typography>
+              <Typography sx={{ width: '100%', height: '100%',flexShrink: 20 }} >{faq.title}</Typography>
             
             </AccordionSummary>
             <AccordionDetails>
-              <Typography className='bg-primary-gray3'>{faq.details}</Typography>
+              <Typography className='bg-primary-white'>{faq.details}</Typography>
             </AccordionDetails>
           </Accordion>
         ))}
