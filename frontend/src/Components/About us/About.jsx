@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, } from 'react';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import ScrollReveal from 'scrollreveal';
@@ -18,6 +18,10 @@ import image94 from '../asset/image94.jpg';
 import image95 from '../asset/image95.jpg';
 import image96 from '../asset/image96.jpg';
 import image97 from '../asset/image97.jpg';
+import image86 from '../asset/leader1.png';
+import image87 from '../asset/leader2.png';
+import image88 from '../asset/leader3.png';
+import image89 from '../asset/leader4.png';
 
 // Developer card component
 const DeveloperCard = React.memo(({ name, role, avatarUrl }) => (
@@ -35,25 +39,25 @@ const DeveloperCard = React.memo(({ name, role, avatarUrl }) => (
     </CardContent>
   </Card>
 ));
-const CustomLeftArrow = ({ onClick }) => (
-  <button
-    onClick={onClick}
-    className="absolute left-2 z-10 bg-white shadow-lg rounded-full p-2 hover:bg-gray-100 focus:outline-none"
-    style={{ top: '50%', transform: 'translateY(-50%)' }}
-  >
-    &#10094; {/* HTML code for left arrow */}
-  </button>
-);
+// const CustomLeftArrow = ({ onClick }) => (
+//   <button
+//     onClick={onClick}
+//     className="absolute left-2 z-10 bg-white shadow-lg rounded-full p-2 hover:bg-gray-100 focus:outline-none"
+//     style={{ top: '50%', transform: 'translateY(-50%)' }}
+//   >
+//     &#10094; {/* HTML code for left arrow */}
+//   </button>
+// );
 
-const CustomRightArrow = ({ onClick }) => (
-  <button
-    onClick={onClick}
-    className="absolute right-2 z-10 bg-white shadow-lg rounded-full p-2 hover:bg-gray-100 focus:outline-none"
-    style={{ top: '50%', transform: 'translateY(-50%)' }}
-  >
-    &#10095; {/* HTML code for right arrow */}
-  </button>
-);
+// const CustomRightArrow = ({ onClick }) => (
+//   <button
+//     onClick={onClick}
+//     className="absolute right-2 z-10 bg-white shadow-lg rounded-full p-2 hover:bg-gray-100 focus:outline-none"
+//     style={{ top: '50%', transform: 'translateY(-50%)' }}
+//   >
+//     &#10095; {/* HTML code for right arrow */}
+//   </button>
+// );
 
 // About section
 const About = () => {
@@ -77,10 +81,10 @@ const About = () => {
   }, []);
 
   const developers = [
-    { name: 'Ms. Veronica', role: 'Web Design', avatarUrl: '' },
-    { name: 'Missa Santos', role: 'CEO Founder', avatarUrl: '' },
-    { name: 'Lisa Antonia', role: 'Frontend Developer', avatarUrl: '' },
-    { name: 'Lisa Antonia', role: 'Full Stack Developer', avatarUrl: '' },
+    { img: image86, name: 'Ms. Veronica', role: 'Web Design', avatarUrl: '' },
+    { img: image87,name: 'Missa Santos', role: 'CEO Founder', avatarUrl: '' },
+    { img: image88,name: 'Lisa Antonia', role: 'Frontend Developer', avatarUrl: '' },
+    { img: image89,name: 'Lisa Antonia', role: 'Full Stack Developer', avatarUrl: '' },
   ];
 
   const features = [
@@ -149,7 +153,7 @@ const About = () => {
         <Typography variant="h4" className="font-bold">Meet Our Team</Typography>
         <div className="flex flex-wrap justify-center">
           {developers.map((dev, index) => (
-            <DeveloperCard key={index} name={dev.name} role={dev.role} avatarUrl={dev.avatarUrl} />
+            <DeveloperCard key={index} name={dev.name} role={dev.role} avatarUrl={dev.img} />
           ))}
         </div>
       </section>

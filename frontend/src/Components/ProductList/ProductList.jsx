@@ -110,7 +110,7 @@ const styles = {
     marginBottom: '15px',
   },
   button: {
-    backgroundColor: '#007BFF',
+    backgroundColor: 'black',
     color: '#fff',
     border: 'none',
     padding: '10px 20px',
@@ -118,8 +118,8 @@ const styles = {
     cursor: 'pointer',
     transition: 'background-color 0.3s ease',
   },
-  buttonHover: {
-    backgroundColor: '#0056b3',
+  buttonhover:{
+    backgroundColor:'#f9cc9d'
   },
   error: {
     color: 'red',

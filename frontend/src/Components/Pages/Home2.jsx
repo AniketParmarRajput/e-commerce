@@ -17,6 +17,7 @@ import home22 from '../asset/home22.jpg';
 import home23 from '../asset/home23.jpg';
 import home24 from '../asset/home24.jpg';
 import home25 from '../asset/home25.jpg';
+import image26 from '../asset/bannerhome2.jpg';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Side from '../Side/Side';
 
@@ -118,6 +119,12 @@ const Home2 = () => {
           </div>
         ))}
       </section>
+      <div className='h-96 p-10 pb-10'>
+        <div style={{ backgroundImage: `url(${image26})`, height:'400px', }}>
+aniket
+        </div>
+</div>
+
     </div>
   );
 }
