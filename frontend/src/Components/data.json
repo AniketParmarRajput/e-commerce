@@ -1,0 +1,19 @@
+[
+    {
+        "ID": "COO1",
+        "Name": "Spec_1", 
+        "Image": "https://www.encodedna.com/images/theme/jQuery.png"
+    },
+ 
+    {
+        "ID": "COO2",
+        "Name": "Spec_2", 
+        "Image": "https://www.encodedna.com/images/theme/json.png" 
+    },
+  
+    {
+        "ID": "COO3",
+        "Name": "Spec_3", 
+        "Image": "https://www.encodedna.com/images/theme/angularjs.png"
+    }
+]

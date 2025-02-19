@@ -3,7 +3,7 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}",],
   theme: {
     screens: {
-      'sm': '100px', // Custom breakpoint for 400px
+      'sm': '200px', // Custom breakpoint for 400px
       'md': '768px', // Default breakpoint for 768px
       // ... other breakpoints
     },

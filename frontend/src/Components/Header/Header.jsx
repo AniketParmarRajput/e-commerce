@@ -33,16 +33,16 @@ const Header = () => {
       <nav className="hidden md:flex flex-grow justify-center items-center">
         <NavLink />
         <ul className="flex gap-10 py-2 text-base font-medium">
-          <li className="hover:text-primary-Camel">
+          <li className="hover:text-primary-Camel font-bold">
             <Link to="/About">About Us</Link>
           </li>
-          <li className="hover:text-primary-Camel">
+          <li className="hover:text-primary-Camel font-bold">
             <Link to="/AddProduct">Add Products</Link>
           </li>
-          <li className="hover:text-primary-Camel">
+          <li className="hover:text-primary-Camel font-bold">
             <Link to="/ProductList">Products</Link>
           </li>
-          <li className="hover:text-primary-Camel">
+          <li className="hover:text-primary-Camel font-bold">
             <Link to="/Contect">Contact</Link>
           </li>
         </ul>

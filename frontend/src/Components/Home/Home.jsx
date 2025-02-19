@@ -15,10 +15,12 @@ import image14 from '../asset/image14.jpg';
 import image15 from '../asset/image15.jpg';
 import image16 from '../asset/image16.jpg';
 import image17 from '../asset/image17.jpg';
-import image222 from '../asset/image222.jpg';
+
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Side from '../Side/Side';
 import Product from '../Product/Product.jsx';
+
+import Image from '../Image/Image.jsx';
 
 
 const Home = () => {
@@ -45,17 +47,12 @@ const Home = () => {
 
   return (
     <div>
-      {/* <SliderCarousel/> */}
-      <section className='h-screen w-full bg-cover  flex justify-start items-center  ' style={{backgroundImage:`url(${image222})`}}>
-<aside className=' h-56 w-1/2 pl-20 space-y-4 '>
-  <p className='animate-fadeInBottom duration-700 delay-5s'>NEW COLLECTION</p>
-  <h1 className='text-6xl font-medium animate-fadeInBottom duration-200 delay-[59.3s]' >Best Of NeoCon <br></br>Glod Award</h1>
-  <button className='border border-primary-black px-8 py-4 rounded hover:text-primary-Camel hover:border-primary-Camel animate-fadeInBottom duration-200 delay-[59.3s]'>SHOP NOW</button>
-
-</aside>
-      </section>
+     <section>
+     
+     {/* <Image/> */}
+     </section>
       <Side />
-    <div
+    {/* <div
       id="animated-section"
       className={`h-96 flex m-20 ${
         isVisible ? 'animate-fadeInBottom duration-200 delay-[59.3s]' : 'opacity-0'
@@ -117,7 +114,45 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </div> 
+    </div>  */}
+    <section 
+  style={{
+    padding:"70px",
+    height: "800px",
+    border: "2px solid red",
+    boxSizing: "border-box",
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",  // 3 equal columns
+    gridTemplateRows: "repeat(3, 1fr)",  // 4 equal rows to structure content
+    rowGap:"10px",
+    columnGap:"30px" // Optional for spacing
+  }}
+>
+  <div 
+    style={{
+      border: "2px solid red",
+      gridRowStart: "1",
+      gridRowEnd: "4", // Spans 3 rows
+      height: "80%", 
+      backgroundImage:`url(${image5})`,
+      backgroundRepeat:"no-repeat" // Full height of assigned rows
+    }}
+  >
+    <div className="h-auto w-72 ml-40 p-5 space-y-7">
+          <h1 className="text-3xl text-left">
+            Mini rechargeable Table Lamp - <br />
+            E216
+          </h1>
+          <p>WE DESIGN YOUR HOME</p>
+          <button className="border border-black border-3 p-5">DISCOVER NOW</button>
+        </div>
+  </div>
+  <div style={{ border: "2px solid red",width:"250px", height:"200px" }}>item2</div>
+  <div style={{ border: "2px solid red",width:"250px", height:"200px" }}>item3</div>
+  <div style={{ border: "2px solid red",width:"250px", height:"200px" }}>item4</div>
+  <div style={{ border: "2px solid red",width:"250px", height:"200px" }}>item5</div>
+</section>
+
     <div>
     <div className='pl-[100px]'>
       <h1 className='text-2xl'>THE NEW ARRIVALS</h1>
@@ -207,5 +242,3 @@ const Home = () => {
 }
 
 export default Home
-
-

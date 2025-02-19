@@ -40,7 +40,7 @@ const Home2 = () => {
       <section className='h-screen w-full bg-cover flex justify-start items-center' style={{ backgroundImage: `url(${home2})` }}>
         <aside className='h-56 w-1/2 pl-20 space-y-4'>
           <p>MADE OF FRESH INGREDIENTS</p>
-          <h1 className='text-6xl font-medium'>A Natural & <br /> Organic Skincare</h1>
+          <h1 className='text-6xl font-bold'>A Natural & <br /> Organic Skincare</h1>
           <button className='border border-primary-black px-8 py-4 rounded hover:text-primary-green hover:border-l-primary-green'>
             SHOP NOW
           </button>
